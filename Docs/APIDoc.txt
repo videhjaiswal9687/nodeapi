@@ -1,0 +1,218 @@
+// User Registration
+URL:http://localhost:3000/register
+Request Type:POST
+Request Body:
+{
+    "name":"Mohan Sharma",
+    "email":"mohan@gmail.com",
+    "password":"12345",
+    "profileimage:'user.jpeg'  note: type:file
+    "mobile":7898766543,
+    "city":"Bhopal",
+    "address":"Bhopal M.P",
+    "gender":"Male"
+}
+Response:
+{
+    "msg": "User Register Successfully !!!",
+    "record": {
+        "_id": 3,
+        "name": "mohan sharma",
+        "email": "mohan@gmail.com",
+        "password": "12345",
+        "profileimage": "http://localhost:3000/uploads/1688393381372_user.jpeg",
+        "mobile": "7898766543",
+        "city": "Bhopal",
+        "address": "Bhopal M.P",
+        "gender": "Male",
+        "role": "user",
+        "status": 0,
+        "info": "Mon Jul 03 2023 19:39:41 GMT+0530 (India Standard Time)",
+        "__v": 0
+    }
+}
+
+--------------------------------------------------
+//Login 
+Note:Invalid User 
+URL:http://localhost:3000/login
+Request Type:POST 
+Request Body:
+{
+    "email":"sdfsdfs@gmail.com",
+    "password":"12345"
+}
+Response
+{
+    "msg": "Invalid User, Please Verfiy User"
+}
+-----
+Note:User Login 
+URL:http://localhost:3000/login
+Request Type:POST 
+Request Body:
+{
+    "email":"sdfsdfs@gmail.com",
+    "password":"12345"
+}
+Response:
+{
+    "msg": "User Login Successfully!!!",
+    "userdetails": {
+        "responseCode": 2,
+        "userDetails": {
+            "_id": 3,
+            "name": "mohan sharma",
+            "email": "mohan@gmail.com",
+            "password": "12345",
+            "profileimage": "http://localhost:3000/uploads/1688393381372_user.jpeg",
+            "mobile": "7898766543",
+            "city": "Bhopal",
+            "address": "Bhopal M.P",
+            "gender": "Male",
+            "role": "user",
+            "status": 1,
+            "info": "Mon Jul 03 2023 19:39:41 GMT+0530 (India Standard Time)",
+            "__v": 0
+        }
+    }
+}
+--------
+Note:Admin Login 
+
+URL:http://localhost:3000/login
+Request Type:POST 
+Request Body:
+{
+    "email":"admin@gmail.com",
+    "password":"12345"
+}
+Response:
+{
+    "msg": "Admin Login Successfully!!!",
+    "userdetails": {
+        "responseCode": 1,
+        "userDetails": {
+            "_id": 4,
+            "name": "admin",
+            "email": "admin@gmail.com",
+            "password": "12345",
+            "profileimage": "http://localhost:3000/uploads/1688478050987_user.jpg",
+            "mobile": "7898766555",
+            "city": "Ujjain",
+            "address": "Ujjain M.P",
+            "gender": "Male",
+            "role": "admin",
+            "status": 1,
+            "info": "Tue Jul 04 2023 19:10:51 GMT+0530 (India Standard Time)",
+            "__v": 0
+        }
+    }
+}
+--------------------
+//User Profile Update 
+URL:http://localhost:3000/admin/updateuser
+Request Type:PUT
+Request Body:
+{
+    "name":"mohan verma",
+    "email":"mohan@gmail.com",
+    "password":"123456",
+    "profileimage":"http://localhost:3000/uploads/1688652795659_user.png",
+    "mobile":"7898766767",
+    "city":"Dewas",
+    "address":"Dewas M.P",
+    "gender":"Male",
+}
+Response:
+{
+    "msg": "User Profile Updated  Successfully !!!",
+    "record": {
+        "_id": 3,
+        "name": "mohan verma",
+        "email": "mohan@gmail.com",
+        "password": "123456",
+        "profileimage": "http://localhost:3000/uploads/1688652795659_user.png",
+        "mobile": "7898766767",
+        "city": "Dewas",
+        "address": "Dewas M.P",
+        "gender": "Male",
+        "role": "user",
+        "status": 1,
+        "info": "Mon Jul 03 2023 19:39:41 GMT+0530 (India Standard Time)",
+        "__v": 0
+    }
+}
+
+------
+Delete User 
+URL:http://localhost:3000/admin/manageuserstatus?regId=3
+Request Type:GET 
+Response:
+{
+    "msg": "User Deleted Successfully!!"
+}
+----------
+Block User 
+URL:http://localhost:3000/admin/manageuserstatus?s=block&regId=2
+Request Type:GET 
+Response:
+{
+    "_id": 2,
+    "name": "neha sharma",
+    "email": "neha@gmail.com",
+    "password": "12345",
+    "profileimage": "http://localhost:3000/uploads/1688465687415_user1.jpeg",
+    "mobile": "8987876544",
+    "city": "Bhopal",
+    "address": "Bhopal M.P",
+    "gender": "Female",
+    "role": "user",
+    "status": 0,
+    "info": "Tue Jul 04 2023 15:44:47 GMT+0530 (India Standard Time)",
+    "__v": 0
+}
+---------
+//Add Category
+URL : http://localhost:3000/admin/addcategory
+Request Type:POST 
+Request Body:
+{
+    catname:'Hospital',
+    caticonname:'logo-1.png'
+}
+Response:
+{
+    "msg": "Added Category Successfully!!",
+    "category": {
+        "_id": 1,
+        "catname": "hospital",
+        "caticonname": "http://localhost:3000/category/1688739237831_logo1.png",
+        "__v": 0
+    }
+}
+----------
+//Add Sub Category
+URL:http://localhost:3000/admin/addsubcategory
+Request Type:POST 
+Request Body:
+{
+    catname:'hospital',
+    subcaticonname:'CHL Appollo Indore Hospital',
+    subcaticonname:'house.png'
+}
+Response:
+{
+    "msg": "Sub Category Added  Successfully!!",
+    "category": {
+        "_id": 2,
+        "catname": "hospital",
+        "subcatname": "chl appollo indore hospital",
+        "subcaticonname": "http://localhost:3000/subcategory/1688824419427_house.jpg",
+        "__v": 0
+    }
+}
+
+npm:Node Package Manager (package)
+npx:Node Package eXecute (execute)
+NPX stands for Node Package eXecute. It is simply an NPM package runner. It allows developers to execute any Javascript Package available on the NPM registry without even installing it. NPX is installed automatically with NPM version 5.2. 0 and above.

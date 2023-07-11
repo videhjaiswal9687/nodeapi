@@ -1,0 +1,27 @@
+npm install multer
+
+Multer in Node. js is a middleware that is used for the easy handling of multipart/form-data that is used when file uploading is done.
+--------------
+
+https://expressjs.com/en/resources/middleware/multer.html
+--------------
+
+The disk storage engine gives you full control on storing files to disk.
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '/tmp/my-uploads')
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+    cb(null, file.fieldname + '-' + uniqueSuffix)
+  }
+})
+
+const upload = multer({ storage: storage })
+
+There are two options available, destination and filename. They are both functions that determine where the file should be stored.
+
+destination is used to determine within which folder the uploaded files should be stored. This can also be given as a string (e.g. '/tmp/uploads'). If no destination is given, the operating system’s default directory for temporary files is used.
+
+filename is used to determine what the file should be named inside the folder. If no filename is given, each file will be given a random name that doesn’t include any file extension.
