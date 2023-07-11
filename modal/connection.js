@@ -5,6 +5,6 @@ var url = "mongodb+srv://vjuniversal1:videh12345@cluster0.um5zbzw.mongodb.net/ne
 Opens Mongoose's default connection to MongoDB
 */
 mongoose.connect(url)
-// var db = mongoose.connection
+var db = mongoose.connection
 console.log("Connection to Mongodb Database is Done!!")
-// module.exports=db
+module.exports=db
