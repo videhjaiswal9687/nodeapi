@@ -14,7 +14,7 @@ function indexcontroller() {
                         status: 0,
                         role:'user',
                         info: Date(),
-                        profileimage:"http://localhost:3000/"+imgpath
+                        profileimage:"https://videhjaiswal.onrender.com/"+imgpath
                     }
                     indexmodal.userregistermodal(userdetails)
                     .then((result)=>{
