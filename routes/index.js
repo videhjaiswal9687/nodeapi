@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var indexcontroller = require('../controller/indexcontroller')
 var imgupload = require('../modal/imgupload')
+var cloudinary = require('cloudinary')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
