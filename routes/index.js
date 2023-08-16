@@ -19,16 +19,37 @@ router.get('/', function (req, res, next) {
 //     })
 // })
 
-router.post('/register', imgupload.single('profileimage'),(req, res) => {
+// router.post('/register', imgupload.single('profileimage'),(req, res) => {
+//   console.log(req.body)
+//   console.log("Image Path=>",req.file.path)
+//   indexcontroller.userregister(req.body,req.file.path)
+//     .then((result) => {
+//       res.json({ "msg": "User Register Successfully !!!", "record": result })
+//     })
+//     .catch((error) => {
+//       res.json({ "msg": "User Not Register!!!", "error": error })
+//     })
+// })
+
+router.post('/register', imgupload.single('profileimage'), (req, res) => {
   console.log(req.body)
-  console.log("Image Path=>",req.file.path)
-  indexcontroller.userregister(req.body,req.file.path)
-    .then((result) => {
-      res.json({ "msg": "User Register Successfully !!!", "record": result })
-    })
-    .catch((error) => {
-      res.json({ "msg": "User Not Register!!!", "error": error })
-    })
+  console.log("Image Path=>", req.file.path)
+  var imgURL
+  cloudinary.v2.uploader.upload(req.file.path, async (error, result) => {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log("Result:", result)
+      imgURL = result.url
+      indexcontroller.userregister(req.body, imgURL)
+        .then((result) => {
+          res.json({ "msg": "User Register Successfully !!!", "record": result })
+        })
+        .catch((error) => {
+          res.json({ "msg": "User Not Register!!!", "error": error })
+        })
+    }
+  })
 })
 
 router.post('/login',(req,res)=>{
