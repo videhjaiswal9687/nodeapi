@@ -36,7 +36,7 @@ function admincontroller() {
                     break
                 }
              }
-             userdetails = {...userdetails,_id:getId,status:1,role:'user',info:Date(),profileimage:'http://localhost:3000/'+imgPath}
+             userdetails = {...userdetails,_id:getId,status:1,role:'user',info:Date(),profileimage:imgPath}
              adminmodal.userupdatemodal(userdetails)
              .then((result)=>{
                 resolve(result)
