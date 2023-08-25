@@ -90,6 +90,17 @@ function admincontroller() {
           })
         })
     }
+    this.fetchsingleuser = (id)=>{
+        return new Promise((resolve, reject) => {
+            adminmodal.getsingleuser(id)
+                .then((result) => {
+                    resolve(result)
+                })
+                .catch((error) => {
+                    reject(error)
+                })
+        })
+    }
 }
 
 module.exports = new admincontroller()

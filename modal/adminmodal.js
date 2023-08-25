@@ -150,6 +150,18 @@ function adminmodal(){
         })
         })
     }
+    this.getsingleuser = (id) =>{
+        return new Promise((resolve, reject) => {
+            //to find record from collection
+            registerschemamodel.findById(id)
+                .then((result)=>{
+                    resolve(result)
+                })
+                .catch((error)=>{
+                    reject(error)
+                })
+            })
+    }
 }
 
 module.exports = new adminmodal()

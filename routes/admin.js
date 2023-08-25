@@ -17,6 +17,19 @@ router.get('/users', (req, res) => {
         })
 })
 
+router.get('/user/:id',(req,res)=>{
+    console.log(req.params.id)
+    admincontroller.fetchsingleuser(parseInt(req.params.id))
+    .then((result) => {
+        res.json(result)
+    })
+    .catch((error) => {
+        res.json(error)
+    })
+})
+
+
+
 router.get('/manageuserstatus', (req, res) => {
     var urlObj = url.parse(req.url, true)
     console.log(urlObj.query)
